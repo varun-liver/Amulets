@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "amulets:gold_chain",
+    "count": 1
+  }
+}

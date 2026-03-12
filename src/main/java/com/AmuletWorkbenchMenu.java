@@ -11,7 +11,6 @@ import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public class AmuletWorkbenchMenu extends AbstractContainerMenu {
     public static final int INPUT_SLOT_COUNT = 2;
@@ -41,7 +40,7 @@ public class AmuletWorkbenchMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(this.amuletContainer, 0, SLOT1X, SLOT1Y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.getItem() instanceof Item;
+                return stack.getItem() instanceof AmuletOre;
             }
 
             @Override
@@ -53,7 +52,7 @@ public class AmuletWorkbenchMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(this.amuletContainer, 1, SLOT2X, SLOT2Y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.getItem() instanceof Item;
+                return stack.getItem() instanceof Chain;
             }
 
             @Override
@@ -104,22 +103,15 @@ public class AmuletWorkbenchMenu extends AbstractContainerMenu {
         }
     }
 
-    private void updateResult() {
-        ItemStack first = this.amuletContainer.getItem(0);
-        ItemStack second = this.amuletContainer.getItem(1);
-        ItemStack result = ItemStack.EMPTY;
-        if(matches(first,second,amulets.AZULI.get(),amulets.AZULI.get())){
-            result = new ItemStack(Items.DIAMOND);
-        }
-        this.resultContainer.setItem(0,result);
-        this.broadcastChanges();
-    }
-    private boolean matches(ItemStack first, ItemStack second, Item firstItem, Item secondItem) {
-        return first.getItem() == firstItem && second.getItem() == secondItem;
+
+    private boolean matches(ItemStack first, ItemStack second, Item firstItem) {
+        return first.is(firstItem) && second.getItem() instanceof Chain;
     }
     private void consumeInputs() {
-        if (!this.resultContainer.getItem(0).isEmpty()) {
+        if (!this.amuletContainer.getItem(0).isEmpty()) {
             this.amuletContainer.removeItem(0, 1);
+        }
+        if (!this.amuletContainer.getItem(1).isEmpty()) {
             this.amuletContainer.removeItem(1, 1);
         }
     }
@@ -161,11 +153,22 @@ public class AmuletWorkbenchMenu extends AbstractContainerMenu {
 
         return quickMoved;
     }
-
+    private void updateResult() {
+        ItemStack first = this.amuletContainer.getItem(0);
+        ItemStack second = this.amuletContainer.getItem(1);
+        ItemStack result = ItemStack.EMPTY;
+        if(matches(first,second,amulets.AZULI.get())){
+            result = new ItemStack(amulets.STRENGTH_AMULET.get());
+        } else if (matches(first,second,amulets.PALADIN.get())) {
+            result = new ItemStack(amulets.SPEED_AMULET.get());
+        }
+        this.resultContainer.setItem(0,result);
+        this.broadcastChanges();
+    }
     @Override
     public void removed(Player player) {
         super.removed(player);
         this.clearContainer(player, this.amuletContainer);
-        this.clearContainer(player, this.resultContainer);
+        this.resultContainer.setItem(0, ItemStack.EMPTY);
     }
 }

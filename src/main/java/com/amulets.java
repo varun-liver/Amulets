@@ -55,8 +55,16 @@ public class amulets {
     //----------------------------------ITEMS----------------------------------
     // Creates a new food item with the id "amulets:example_id", nutrition 1 and saturation 2
     public static final RegistryObject<Item> STRENGTH_AMULET = ITEMS.register("strength_amulet", StrengthAmulet::new);
+    public static final RegistryObject<Item> SPEED_AMULET = ITEMS.register("speed_amulet", SpeedAmulet::new);
+    //----------------------------------CHAIN----------------------------------
+    public static final RegistryObject<Item> IRON_CHAIN = ITEMS.register("iron_chain", () -> new Chain("iron",new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_CHAIN = ITEMS.register("gold_chain", () -> new Chain("gold",new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_CHAIN = ITEMS.register("copper_chain", () -> new Chain("copper",new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_CHAIN = ITEMS.register("diamond_chain", () -> new Chain("diamond",new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_CHAIN = ITEMS.register("netherite_chain", () -> new Chain("netherite",new Item.Properties()));
     //----------------------------------ORES----------------------------------
-    public static final RegistryObject<Item> AZULI = ITEMS.register("azuli", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AZULI = ITEMS.register("azuli", () -> new AmuletOre(new Item.Properties()));
+    public static final RegistryObject<Item> PALADIN = ITEMS.register("paladin", () -> new AmuletOre(new Item.Properties()));
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> STRENGTH_AMULET.get().getDefaultInstance())
