@@ -167,6 +167,8 @@ public class AmuletWorkbenchMenu extends AbstractContainerMenu {
             result = new ItemStack(amulets.SPEED_AMULET.get());
         } else if(matches(first,second,amulets.AZINIUM.get())){
             result = new ItemStack(amulets.HASTE_AMULET.get());
+        } else if (matches(first,second,amulets.IFJED.get())) {
+            result = new ItemStack(amulets.REGENERATION_AMULET.get());
         }
         if (!result.isEmpty() && chainLevel > 0) {
             result.getOrCreateTag().putInt("level", chainLevel);

@@ -57,6 +57,7 @@ public class amulets {
     public static final RegistryObject<Item> STRENGTH_AMULET = ITEMS.register("strength_amulet", () -> new StrengthAmulet(1));
     public static final RegistryObject<Item> SPEED_AMULET = ITEMS.register("speed_amulet", () -> new SpeedAmulet(1));
     public static final RegistryObject<Item> HASTE_AMULET = ITEMS.register("haste_amulet",()-> new HasteAmulet(1));
+    public static final RegistryObject<Item> REGENERATION_AMULET = ITEMS.register("regeneration_amulet",()-> new RegenerationAmulet(1));
     //----------------------------------CHAIN----------------------------------
     public static final RegistryObject<Item> COPPER_CHAIN = ITEMS.register("copper_chain", () -> new Chain("copper",new Item.Properties(),1));
     public static final RegistryObject<Item> IRON_CHAIN = ITEMS.register("iron_chain", () -> new Chain("iron",new Item.Properties(),2));
@@ -67,6 +68,7 @@ public class amulets {
     public static final RegistryObject<Item> AZULI = ITEMS.register("azuli", () -> new AmuletOre(new Item.Properties()));
     public static final RegistryObject<Item> PALADIN = ITEMS.register("paladin", () -> new AmuletOre(new Item.Properties()));
     public static final RegistryObject<Item> AZINIUM = ITEMS.register("azinium",()->new AmuletOre(new Item.Properties()));
+    public static final RegistryObject<Item> IFJED = ITEMS.register("ifjed",()->new AmuletOre(new Item.Properties()));
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> STRENGTH_AMULET.get().getDefaultInstance())
