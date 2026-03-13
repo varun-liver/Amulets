@@ -54,17 +54,19 @@ public class amulets {
     public static final RegistryObject<MenuType<AmuletWorkbenchMenu>> Amulet_WORKBENCH_MENU = MENUS.register("amulet_workbench", () -> IForgeMenuType.create(AmuletWorkbenchMenu::new));
     //----------------------------------ITEMS----------------------------------
     // Creates a new food item with the id "amulets:example_id", nutrition 1 and saturation 2
-    public static final RegistryObject<Item> STRENGTH_AMULET = ITEMS.register("strength_amulet", StrengthAmulet::new);
-    public static final RegistryObject<Item> SPEED_AMULET = ITEMS.register("speed_amulet", SpeedAmulet::new);
+    public static final RegistryObject<Item> STRENGTH_AMULET = ITEMS.register("strength_amulet", () -> new StrengthAmulet(1));
+    public static final RegistryObject<Item> SPEED_AMULET = ITEMS.register("speed_amulet", () -> new SpeedAmulet(1));
+    public static final RegistryObject<Item> HASTE_AMULET = ITEMS.register("haste_amulet",()-> new HasteAmulet(1));
     //----------------------------------CHAIN----------------------------------
-    public static final RegistryObject<Item> IRON_CHAIN = ITEMS.register("iron_chain", () -> new Chain("iron",new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_CHAIN = ITEMS.register("gold_chain", () -> new Chain("gold",new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_CHAIN = ITEMS.register("copper_chain", () -> new Chain("copper",new Item.Properties()));
-    public static final RegistryObject<Item> DIAMOND_CHAIN = ITEMS.register("diamond_chain", () -> new Chain("diamond",new Item.Properties()));
-    public static final RegistryObject<Item> NETHERITE_CHAIN = ITEMS.register("netherite_chain", () -> new Chain("netherite",new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_CHAIN = ITEMS.register("copper_chain", () -> new Chain("copper",new Item.Properties(),1));
+    public static final RegistryObject<Item> IRON_CHAIN = ITEMS.register("iron_chain", () -> new Chain("iron",new Item.Properties(),2));
+    public static final RegistryObject<Item> GOLD_CHAIN = ITEMS.register("gold_chain", () -> new Chain("gold",new Item.Properties(),3));
+    public static final RegistryObject<Item> DIAMOND_CHAIN = ITEMS.register("diamond_chain", () -> new Chain("diamond",new Item.Properties(),4));
+    public static final RegistryObject<Item> NETHERITE_CHAIN = ITEMS.register("netherite_chain", () -> new Chain("netherite",new Item.Properties(),5));
     //----------------------------------ORES----------------------------------
     public static final RegistryObject<Item> AZULI = ITEMS.register("azuli", () -> new AmuletOre(new Item.Properties()));
     public static final RegistryObject<Item> PALADIN = ITEMS.register("paladin", () -> new AmuletOre(new Item.Properties()));
+    public static final RegistryObject<Item> AZINIUM = ITEMS.register("azinium",()->new AmuletOre(new Item.Properties()));
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> STRENGTH_AMULET.get().getDefaultInstance())

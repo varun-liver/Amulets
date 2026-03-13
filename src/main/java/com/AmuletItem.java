@@ -7,8 +7,10 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 public class AmuletItem extends Item {
-    public AmuletItem(Properties properties) {
+    public final int level;
+    public AmuletItem(Properties properties, int level) {
         super(properties);
+        this.level = level;
     }
 
     public static boolean hasAmuletEquipped(ServerPlayer player) {
@@ -18,15 +20,24 @@ public class AmuletItem extends Item {
 
             for (int i = 0; i < handler.getSlots(); i++) {
                 ItemStack stack = handler.getStacks().getStackInSlot(i);
-                if (!stack.isEmpty() && stack.is(amulets.STRENGTH_AMULET.get())) {
+
+                if (!stack.isEmpty() && stack.getItem() instanceof AmuletItem) {
                     return true;
                 }
             }
+
             return false;
         }).orElse(false);
     }
 
     public void onEquippedCurioTick(ServerPlayer player, ItemStack stack) {
         // Override in subclasses for per-tick amulet behavior.
+    }
+
+    protected int getLevel(ItemStack stack) {
+        if (stack.hasTag() && stack.getTag().contains("level")) {
+            return stack.getTag().getInt("level");
+        }
+        return this.level;
     }
 }

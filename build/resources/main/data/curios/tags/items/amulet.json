@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "amulets:strength_amulet"
+    "amulets:strength_amulet",
+    "amulets:speed_amulet"
   ]
 }

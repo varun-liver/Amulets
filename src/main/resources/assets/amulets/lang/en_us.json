@@ -2,5 +2,10 @@
   "container.amulets.example_workbench": "Amulet Workbench",
   "block.amulets.amulet_maker": "Amulet Maker",
   "item.amulets.strength_amulet": "Strength Amulet",
-  "item.amulets.azuli": "Azuli"
+  "item.amulets.azuli": "Azuli",
+  "item.amulets.iron_chain": "Iron Chain",
+  "item.amulets.gold_chain": "Gold Chain",
+  "item.amulets.copper_chain": "Copper Chain",
+  "item.amulets.diamond_chain": "Diamond Chain",
+  "item.amulets.netherite_chain": "Netherite Chain"
 }

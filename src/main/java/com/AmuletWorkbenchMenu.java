@@ -157,10 +157,19 @@ public class AmuletWorkbenchMenu extends AbstractContainerMenu {
         ItemStack first = this.amuletContainer.getItem(0);
         ItemStack second = this.amuletContainer.getItem(1);
         ItemStack result = ItemStack.EMPTY;
+        int chainLevel = 0;
+        if (second.getItem() instanceof Chain chain) {
+            chainLevel = chain.level;
+        }
         if(matches(first,second,amulets.AZULI.get())){
             result = new ItemStack(amulets.STRENGTH_AMULET.get());
         } else if (matches(first,second,amulets.PALADIN.get())) {
             result = new ItemStack(amulets.SPEED_AMULET.get());
+        } else if(matches(first,second,amulets.AZINIUM.get())){
+            result = new ItemStack(amulets.HASTE_AMULET.get());
+        }
+        if (!result.isEmpty() && chainLevel > 0) {
+            result.getOrCreateTag().putInt("level", chainLevel);
         }
         this.resultContainer.setItem(0,result);
         this.broadcastChanges();
