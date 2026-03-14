@@ -2,11 +2,15 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": 1,
+      "rolls": {
+        "min": 5,
+        "max": 100
+      },
       "entries": [
         { "type": "minecraft:item", "name": "amulets:azuli" },
         { "type": "minecraft:item", "name": "amulets:paladin" },
-        { "type": "minecraft:item", "name": "amulets:azinium"}
+        { "type": "minecraft:item", "name": "amulets:azinium"},
+        { "type": "minecraft:item", "name": "amulets:ifjed"}
       ]
     }
   ]
